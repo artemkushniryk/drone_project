@@ -1,0 +1,6 @@
+rotor_mass: 0.005
+base_mass: 1.5
+
+rotor_x: 0.13
+rotor_y: 0.2
+roto_z: 0.023

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="X3">
+
+    <xacro:arg name="simulation_config_file" default="$(find robot_gazebo)/config/simulation_config.yaml" />
+    <xacro:arg name="simulation_config_file" default="$(find robot_gazebo)/config/sensors_and_perception_config.yaml" />
+
+    <xacro:include filename="$(find robot_gazebo)/model/sensors_and_perception_macros.xacro"/>
+
+    <xacro:property name="sim_config_file" value="$(arg simulation_config_file)"/>
+    <xacro:property name="sim_config_file" value="$(xacro.load_yaml(sim_config_file))"//>
+
+</robot>

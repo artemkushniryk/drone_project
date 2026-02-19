@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:macro name="brushless_rotor" params="
+    name:brushless_rotor
+    perent_link:=base_link
+    child:=brushless_rotor
+    lower_limit:=-1e+16
+    upper_limit:=1e+16
+    rotor_drive_radius:=0.1
+    rotor_drive_length:=0.005
+    drive_color:=red
+    roto_mass:=0.005
+    ">
+
+    <xacro:include filename="$(find robot_gazebo)/model/inertial_macros.xacro"/>
+
+    <!-- Creation of the revolute joint -->
+    <joint name="${name}_drive_joint" type="revolute">
+        <parent link="${parent_link}"/>
+        <child link="${child}"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${lower_limit}" upper="${upper_limit}"/>
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+
+    <!-- Creation of the drive link -->
+    <link name="{name}_drive_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://X3/meshes/propeller_ccw.dae" scale="0.1 0.1 0.1"/>
+            </geometry>
+            <material>
+                <color rgba = "$(drive_color)"/>
+                <texture filename="package://media/materials/scripts/gazebo.material"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${rotor_drive_radius}" length="${rotor_drive_length}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="$(rotor_mass)">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+</xacro:macro>
+</robot>
