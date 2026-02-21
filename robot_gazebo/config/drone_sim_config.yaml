@@ -1,0 +1,10 @@
+use_sim_time: True
+
+
+
+
+
+geometry_robot_params: geometry_drone_config.yaml
+geometry_sensing_params: geometry_sensing_config.yaml
+simulation_params: simulation_config.yaml
+controller_params: drone_X3_controller_config.yaml
