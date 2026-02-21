@@ -1,71 +1,73 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="X3">
 
-    <xacro:arg name="geometry_config_file" default="$(find robot_gazebo)/config/geometry_drone_config.yaml"/>
-    <xacro:arg name="geometry_config_file" default="$(find robot_gazebo)/config/geometry_sensing_config.yaml"/>
+    <xacro:arg name="geometry_robot_config_file" default="$(find robot_gazebo)/config/geometry_drone_config.yaml"/>
+    <xacro:arg name="geometry_sensing_config_file" default="$(find robot_gazebo)/config/geometry_sensing_config.yaml"/>
 
     <xacro:include filename="$(find robot_gazebo)/model/brushless_rotor.urdf.xacro">
     <xacro:include filename="$(find robot_gazebo)/model/inertial_macros.xacro">
-    <xacro:include filename="$(find robot_gazebo)/model/sensing_and_perception_macros.xacro">
+    <xacro:include filename="$(find robot_gazebo)/model/robot_sensing_macros.xacro">
 
-    <xacro:property name="config_file" value="$(arg geometry_config_file)">
+    <xacro:property name="config_file" value="$(arg geometry_robot_config_file)">
 
 
 
     <link name="base_link"/>
 
-
-
-
-
-
-
     <xacro:brushless_rotor>
         name="rotor_0"
         parent="base_link"
         child="rotor_0"
-        lower_limit:=-1e+16
-        upper_limit:=1e+16
-        rotor_drive_radius:=0.1
-        rotor_drive_length:=0.005
+        lower_limit:=lower_limit
+        upper_limit:=upper_limit
+        rotor_drive_radius:=rotor_drive_radius
+        rotor_drive_length:=rotor_drive_length
         drive_color:=red
+        roto_mass:=rotor_mass
+        roto_x:= position_x
+        roto_y:= -position_y
+        roto_z:= position_z
 
     <xacro:brushless_rotor>
         name="rotor_1"
         parent="base_link"
         child="rotor_1"
-        lower_limit:=-1e+16
-        upper_limit:=1e+16
-        rotor_drive_radius:=0.1
-        rotor_drive_length:=0.005
+        lower_limit:=lower_limit
+        upper_limit:=upper_limit
+        rotor_drive_radius:=rotor_drive_radius
+        rotor_drive_length:=rotor_drive_length
         drive_color:=red
-
+        roto_mass:=rotor_mass
+        roto_x:= -position_x
+        roto_y:= position_y
+        roto_z:= position_z
 
     <xacro:brushless_rotor>
         name="rotor_2"
         parent="base_link"
         child="rotor_2"
-        lower_limit:=-1e+16
-        upper_limit:=1e+16
-        rotor_drive_radius:=0.1
-        rotor_drive_length:=0.005
+        lower_limit:=lower_limit
+        upper_limit:=upper_limit
+        rotor_drive_radius:=rotor_drive_radius
+        rotor_drive_length:=rotor_drive_length
         drive_color:=red
+        roto_mass:=rotor_mass
+        roto_x:= position_x
+        roto_y:= position_y
+        roto_z:= position_z
 
     <xacro:brushless_rotor>
         name="rotor_3"
         parent="base_link"
         child="rotor_3"
-        lower_limit:=-1e+16
-        upper_limit:=1e+16
-        rotor_drive_radius:=0.1
-        rotor_drive_length:=0.005
+        lower_limit:=lower_limit
+        upper_limit:=upper_limit
+        rotor_drive_radius:=rotor_drive_radius
+        rotor_drive_length:=rotor_drive_length
         drive_color:=red
-
-
-
-
-
-
-
+        roto_mass:=rotor_mass
+        roto_x:= -position_x
+        roto_y:= -position_y
+        roto_z:= position_z
 
 </robot>
