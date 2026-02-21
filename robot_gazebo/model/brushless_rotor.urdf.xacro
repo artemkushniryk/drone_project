@@ -11,6 +11,9 @@
     rotor_drive_length:=0.005
     drive_color:=red
     roto_mass:=0.005
+    roto_x:= 0.13
+    roto_y:= 0.2
+    roto_z:= 0.023
     ">
 
     <xacro:include filename="$(find robot_gazebo)/model/inertial_macros.xacro"/>
