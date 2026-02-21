@@ -4,3 +4,9 @@ base_mass: 1.5
 rotor_x: 0.13
 rotor_y: 0.2
 roto_z: 0.023
+
+lower_limit: -1e16
+upper_limit: 1e16
+
+rotor_drive_radius: 0.1
+rotor_drive_length: 0.005
